@@ -1,0 +1,214 @@
+// Trygg Ekonomi — data model.
+//
+// Privacy notes:
+// - We never store a raw personal number (PNO). `personalIdRef` is an opaque,
+//   stable hash derived from the BankID broker's `sub` claim.
+// - Free-text fields that can identify spending (account number, payee,
+//   description) are encrypted at the application layer (AES-256-GCM) before
+//   being written here — see src/lib/crypto.ts. They are stored as ciphertext
+//   strings and decrypted only in memory when needed.
+// - Monetary amounts stay as Decimal so the engine can do arithmetic; they are
+//   protected by database-level encryption-at-rest (document this with your host).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String     @id @default(cuid())
+  personalIdRef String?    @unique // opaque ref from BankID broker, never raw PNO
+  name          String?
+  email         String?    @unique
+  phone         String?
+  createdAt     DateTime   @default(now())
+
+  caregiverLinks CareLink[] @relation("caregiver")
+  seniorLinks    CareLink[] @relation("senior")
+  sessions       Session[]
+  auditLogs      AuditLog[]
+}
+
+// Authenticated browser session. Cookie holds a signed token whose id maps here.
+model Session {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+  userAgent String?
+  ip        String?
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model CareLink {
+  id           String         @id @default(cuid())
+  caregiver    User           @relation("caregiver", fields: [caregiverId], references: [id])
+  caregiverId  String
+  senior       User?          @relation("senior", fields: [seniorId], references: [id])
+  seniorId     String?
+  // Contact the caregiver entered for the senior, used to deliver the invite.
+  seniorName   String?
+  seniorEmail  String?
+  seniorPhone  String?
+  status       CareLinkStatus @default(invited)
+  inviteToken  String         @unique
+  // Tink connection / credentials id once the senior connects their bank.
+  tinkConnectionId String?
+  createdAt    DateTime       @default(now())
+  activatedAt  DateTime?
+  revokedAt    DateTime?
+
+  consents      Consent[]
+  accounts      Account[]
+  alerts        Alert[]
+  rules         AlertRule[]
+
+  @@index([caregiverId])
+  @@index([seniorId])
+}
+
+enum CareLinkStatus {
+  invited
+  active
+  revoked
+}
+
+model Consent {
+  id         String    @id @default(cuid())
+  careLink   CareLink  @relation(fields: [careLinkId], references: [id], onDelete: Cascade)
+  careLinkId String
+  scope      String // e.g. "accounts:read,transactions:read"
+  grantedAt  DateTime  @default(now())
+  expiresAt  DateTime // PSD2: <= 180 days
+  active     Boolean   @default(true)
+  revokedAt  DateTime?
+
+  @@index([careLinkId])
+}
+
+model Account {
+  id            String   @id @default(cuid())
+  careLink      CareLink @relation(fields: [careLinkId], references: [id], onDelete: Cascade)
+  careLinkId    String
+  tinkAccountId String
+  name          String
+  maskedNumber  String? // encrypted at rest (see crypto.ts)
+  balance       Decimal  @db.Decimal(14, 2)
+  currency      String   @default("SEK")
+  updatedAt     DateTime @updatedAt
+
+  transactions Transaction[]
+  snapshots    BalanceSnapshot[]
+
+  // Scoped per CareLink: the same bank account may legitimately be shared in two
+  // different caregiver relationships (e.g. two adult children).
+  @@unique([careLinkId, tinkAccountId])
+  @@index([careLinkId])
+}
+
+// Periodic balance readings, so BALANCE_DROP can compare against a baseline.
+model BalanceSnapshot {
+  id        String   @id @default(cuid())
+  account   Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  accountId String
+  balance   Decimal  @db.Decimal(14, 2)
+  takenAt   DateTime @default(now())
+
+  @@index([accountId, takenAt])
+}
+
+model Transaction {
+  id          String   @id @default(cuid())
+  account     Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  accountId   String
+  tinkTxId    String
+  bookedAt    DateTime
+  amount      Decimal  @db.Decimal(14, 2) // negative = debit
+  currency    String   @default("SEK")
+  payee       String? // encrypted at rest (see crypto.ts)
+  description String? // encrypted at rest (see crypto.ts)
+  createdAt   DateTime @default(now())
+
+  alerts Alert[]
+
+  @@unique([accountId, tinkTxId])
+  @@index([accountId, bookedAt])
+}
+
+model AlertRule {
+  id         String   @id @default(cuid())
+  careLink   CareLink @relation(fields: [careLinkId], references: [id], onDelete: Cascade)
+  careLinkId String
+  type       String // matches AlertType in code
+  enabled    Boolean  @default(true)
+  config     Json // thresholds etc.
+
+  @@unique([careLinkId, type])
+  @@index([careLinkId])
+}
+
+model Alert {
+  id            String       @id @default(cuid())
+  careLink      CareLink     @relation(fields: [careLinkId], references: [id], onDelete: Cascade)
+  careLinkId    String
+  type          String
+  severity      String // low | medium | high
+  status        AlertStatus  @default(new)
+  message       String
+  // Stable hash of (type + transactionId/day) used to avoid duplicate alerts.
+  dedupeKey     String?
+  transaction   Transaction? @relation(fields: [transactionId], references: [id], onDelete: SetNull)
+  transactionId String?
+  createdAt     DateTime     @default(now())
+  seenAt        DateTime?
+  dismissedAt   DateTime?
+
+  notifications NotificationLog[]
+
+  @@unique([careLinkId, dedupeKey])
+  @@index([careLinkId, status])
+}
+
+enum AlertStatus {
+  new
+  seen
+  dismissed
+}
+
+model NotificationLog {
+  id      String   @id @default(cuid())
+  alert   Alert    @relation(fields: [alertId], references: [id], onDelete: Cascade)
+  alertId String
+  channel String // email | sms | push
+  toRef   String
+  sentAt  DateTime @default(now())
+  success Boolean
+  error   String?
+
+  @@index([alertId])
+}
+
+// Immutable audit trail of every data access and privacy-relevant action.
+model AuditLog {
+  id         String   @id @default(cuid())
+  actor      User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  actorId    String?
+  action     String // e.g. CONSENT_GRANT, CONSENT_REVOKE, DATA_ACCESS, DATA_PURGE, LOGIN
+  careLinkId String?
+  targetType String?
+  targetId   String?
+  metadata   Json?
+  ip         String?
+  createdAt  DateTime @default(now())
+
+  @@index([careLinkId])
+  @@index([actorId])
+  @@index([createdAt])
+}

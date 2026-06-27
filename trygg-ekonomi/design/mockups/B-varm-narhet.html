@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Trygg Ekonomi — Riktning B: Varm Närhet</title>
+<style>
+  :root{
+    --bg:#FDF6EF; --ink:#33271F; --muted:#7A6A5C;
+    --terra:#C2603F; --terra-d:#A84E30; --moss:#4F6B53; --cream:#FBEEE2;
+    --line:#EEDFD0; --card:#FFFFFF;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+  .pill{display:inline-flex;align-items:center;gap:8px;border-radius:14px;padding:15px 24px;font-weight:700;font-size:16px}
+  .btn-primary{background:var(--terra);color:#fff;box-shadow:0 10px 24px -12px rgba(168,78,48,.7)}
+  .btn-primary:hover{background:var(--terra-d)}
+  .btn-ghost{background:#fff;border:1.5px solid var(--line);color:var(--ink)}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:800;font-size:21px;font-family:var(--serif)}
+  .logo .dot{width:32px;height:32px;border-radius:50%;background:var(--terra);display:grid;place-items:center}
+  .navlinks{display:flex;align-items:center;gap:26px;color:var(--muted);font-weight:600;font-size:15px}
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;padding:38px 0 30px}
+  .eyebrow{font-weight:700;color:var(--terra);letter-spacing:.06em;text-transform:uppercase;font-size:13px}
+  h1{font-family:var(--serif);font-size:58px;line-height:1.05;margin:14px 0 18px;font-weight:800;letter-spacing:-.01em}
+  h1 em{font-style:italic;color:var(--terra)}
+  .sub{font-size:20px;color:var(--muted);max-width:34ch;line-height:1.5}
+  .cta{display:flex;gap:14px;margin:30px 0 16px;flex-wrap:wrap}
+  .bankid{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:14px;font-weight:500}
+  .bankid .bx{font-weight:800;background:#fff;border:1.5px solid var(--line);border-radius:7px;padding:4px 8px;font-size:13px}
+  /* warm photo-like hero scene */
+  .scene{position:relative;aspect-ratio:4/4.4;border-radius:30px;overflow:hidden;
+     background:linear-gradient(160deg,#F3C9A6 0%, #E79E76 45%, #C2603F 100%);
+     box-shadow:0 30px 60px -30px rgba(168,78,48,.55)}
+  .scene .sun{position:absolute;top:40px;right:46px;width:74px;height:74px;border-radius:50%;background:#FBE7C9;filter:blur(.5px);opacity:.9}
+  .scene .hill{position:absolute;left:-5%;right:-5%;bottom:-2%;height:42%;background:#4F6B53;border-radius:50% 50% 0 0/70% 70% 0 0}
+  .scene .hill2{position:absolute;left:-10%;right:-10%;bottom:-2%;height:30%;background:#3C5340;border-radius:50% 50% 0 0/80% 80% 0 0;opacity:.85}
+  .figs{position:absolute;left:0;right:0;bottom:14%;display:flex;justify-content:center;gap:6px;align-items:flex-end}
+  .fig{width:64px;height:120px;background:#33271F;border-radius:34px 34px 12px 12px;position:relative;opacity:.92}
+  .fig.small{height:96px;width:56px;background:#5A4636}
+  .fig .head{position:absolute;top:-26px;left:50%;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;background:inherit}
+  .badge{position:absolute;background:#fff;border-radius:16px;padding:12px 15px;box-shadow:0 18px 36px -20px rgba(51,39,31,.5);font-size:14px;font-weight:700;display:flex;align-items:center;gap:9px}
+  .badge .tdot{width:10px;height:10px;border-radius:50%}
+  .badge.b1{top:22px;left:20px}
+  .badge.b2{bottom:26px;right:18px}
+  .trust{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;padding:18px 0;color:var(--muted);font-size:14px;font-weight:700}
+  .trust span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 16px;display:flex;align-items:center;gap:8px}
+  .trust .chk{color:var(--terra)}
+  section{padding:62px 0}
+  .h2{font-family:var(--serif);font-size:38px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em}
+  .lead{color:var(--muted);font-size:18px;margin-bottom:34px;max-width:52ch}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px}
+  .ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;margin-bottom:18px}
+  .card h3{font-family:var(--serif);font-size:22px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15.5px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:28px}
+  .num{width:44px;height:44px;border-radius:14px;background:var(--cream);color:var(--terra);display:grid;place-items:center;font-weight:800;font-size:20px;margin-bottom:14px;font-family:var(--serif)}
+  .step h3{font-size:19px;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:15px}
+  .dignity{background:var(--moss);color:#F4EFE7;border-radius:28px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+  .dignity h2{font-family:var(--serif);font-size:34px;margin-bottom:12px;color:#fff}
+  .dignity p{color:#DCE6DA;font-size:17px}
+  .dignity ul{list-style:none;display:grid;gap:13px;margin-top:18px}
+  .dignity li{display:flex;gap:12px;align-items:flex-start;font-size:16.5px}
+  .dignity .chk{width:24px;height:24px;flex:none;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:12px;margin-top:1px}
+  .quote{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:26px;font-family:var(--serif);font-size:20px;line-height:1.5}
+  .quote .who{margin-top:14px;font-size:14px;color:#CFE0CC;font-weight:700;font-family:var(--sans)}
+  footer{padding:32px 0;color:var(--muted);font-size:13px;text-align:center}
+  .label{position:fixed;top:14px;right:14px;background:var(--ink);color:#fff;font-size:12px;font-weight:700;padding:8px 12px;border-radius:999px;opacity:.92}
+</style>
+</head>
+<body>
+<div class="label">RIKTNING B · Varm Närhet</div>
+<div class="wrap">
+  <nav>
+    <div class="logo"><span class="dot">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.3-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.7-7 10-7 10z" fill="#fff"/></svg>
+    </span>Trygg Ekonomi</div>
+    <div class="navlinks">
+      <a>Så funkar det</a><a>Trygghet</a><a>Pris</a>
+      <a class="pill btn-ghost" style="padding:10px 18px;font-size:14px">Logga in</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <span class="eyebrow">För dig som bryr dig</span>
+      <h1>Finns där för mamma — <em>utan</em> att ta över.</h1>
+      <p class="sub">Ett varmt sätt att veta att allt är okej med dina föräldrars ekonomi. Du får veta först när något avviker.</p>
+      <div class="cta">
+        <a class="pill btn-primary">Kom igång med BankID</a>
+        <a class="pill btn-ghost">Se hur det känns</a>
+      </div>
+      <div class="bankid"><span class="bx">BankID</span> Tryggt, svenskt och endast läsbehörighet</div>
+    </div>
+    <div class="scene">
+      <div class="sun"></div>
+      <div class="hill2"></div>
+      <div class="hill"></div>
+      <div class="figs">
+        <div class="fig small"><span class="head"></span></div>
+        <div class="fig"><span class="head"></span></div>
+      </div>
+      <div class="badge b1"><span class="tdot" style="background:#4F6B53"></span>Allt ser bra ut idag</div>
+      <div class="badge b2"><span class="tdot" style="background:#C2603F"></span>En sak att kolla</div>
+    </div>
+  </header>
+
+  <div class="trust">
+    <span><span class="chk">✓</span> Endast läsbehörighet</span>
+    <span><span class="chk">✓</span> BankID</span>
+    <span><span class="chk">✓</span> PSD2 / Tink</span>
+    <span><span class="chk">✓</span> GDPR · svensk tjänst</span>
+  </div>
+
+  <section>
+    <div class="h2">Tre saker du får</div>
+    <p class="lead">Inte ett bedrägerilarm. Ett sätt att finnas nära — på avstånd, med respekt.</p>
+    <div class="grid3">
+      <div class="card">
+        <div class="ic" style="background:#FBEEE2;color:#C2603F"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.3-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.7-7 10-7 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        <h3>Lugn för dig</h3>
+        <p>Diskret tidig varning vid missade räkningar, ovanliga uttag och nya mottagare.</p>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:#EAF0E9;color:#4F6B53"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        <h3>Värdighet för föräldern</h3>
+        <p>Din förälder äger samtycket, ser vad som delas och behåller kontrollen. Samarbete, inte övervakning.</p>
+      </div>
+      <div class="card">
+        <div class="ic" style="background:#FBEEE2;color:#C2603F"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <h3>Beredskap</h3>
+        <p>Framtidsfullmakt och viktiga dokument samlade — så en kris inte blir kaos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:6px">
+    <div class="h2">Så funkar det</div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Bjud in din förälder</h3><p>Skapa en länk och dela via SMS eller e-post.</p></div>
+      <div class="step"><div class="num">2</div><h3>Hon godkänner med BankID</h3><p>Ett swipe. Hon ser exakt vad som delas.</p></div>
+      <div class="step"><div class="num">3</div><h3>Du får diskreta varningar</h3><p>Bara när något avviker. Annars är det tyst.</p></div>
+    </div>
+  </section>
+
+  <section style="padding-top:6px">
+    <div class="dignity">
+      <div>
+        <h2>Din förälder bestämmer allt</h2>
+        <p>Den vanligaste oron är "blir det övervakning?". Svaret är nej — och det är inbyggt.</p>
+        <ul>
+          <li><span class="chk">✓</span> Ser i realtid vad som delas och med vem</li>
+          <li><span class="chk">✓</span> Kan dra tillbaka åtkomsten direkt</li>
+          <li><span class="chk">✓</span> Ingen kan flytta pengar — bara se</li>
+        </ul>
+      </div>
+      <div class="quote">
+        "Jag ville bara veta att allt var okej med mamma. Nu slipper jag oroa mig — och hon känner sig respekterad."
+        <div class="who">Karin, 54 — dotter och användare</div>
+      </div>
+    </div>
+  </section>
+</div>
+<footer>Endast läsbehörighet · Samtyckesbaserat · GDPR — inga pengar kan flyttas via tjänsten.</footer>
+</body>
+</html>
