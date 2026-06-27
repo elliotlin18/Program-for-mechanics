@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Trygg Ekonomi — Riktning C: Trygg Auktoritet</title>
+<style>
+  :root{
+    --bg:#FFFFFF; --ink:#0C1F1A; --muted:#566963;
+    --forest:#0B3D2E; --forest-2:#0E4E3A; --gold:#D8A24A; --gold-d:#BC8730;
+    --mint:#EAF2EE; --line:#E4E9E6; --card:#FFFFFF;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+  .pill{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:15px 24px;font-weight:700;font-size:16px}
+  .btn-gold{background:var(--gold);color:#241a06}
+  .btn-gold:hover{background:var(--gold-d)}
+  .btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,.35);color:#fff}
+  /* dark hero band */
+  .band{background:radial-gradient(120% 140% at 85% 0%, #0E4E3A 0%, #0B3D2E 55%, #082C21 100%);color:#EAF2EE}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:800;font-size:20px;color:#fff;letter-spacing:-.01em}
+  .logo .dot{width:31px;height:31px;border-radius:9px;background:var(--gold);display:grid;place-items:center}
+  .navlinks{display:flex;align-items:center;gap:26px;color:#BFD3CB;font-weight:600;font-size:15px}
+  .navlinks a:hover{color:#fff}
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:44px 0 60px}
+  .eyebrow{display:inline-flex;gap:8px;align-items:center;background:rgba(216,162,74,.16);color:#F0CE8E;font-weight:700;font-size:13px;padding:7px 14px;border-radius:999px;letter-spacing:.02em}
+  h1{font-size:55px;line-height:1.05;letter-spacing:-.025em;margin:18px 0 16px;font-weight:800;color:#fff}
+  h1 .hl{color:var(--gold)}
+  .sub{font-size:20px;color:#C7D9D1;max-width:34ch}
+  .cta{display:flex;gap:14px;margin:30px 0 18px;flex-wrap:wrap}
+  .bankid{display:flex;align-items:center;gap:10px;color:#AFC6BD;font-size:14px}
+  .bankid .bx{font-weight:800;color:#0B3D2E;background:#fff;border-radius:7px;padding:4px 8px;font-size:13px}
+  /* dashboard preview card */
+  .panel{background:#fff;border-radius:18px;box-shadow:0 40px 80px -36px rgba(0,0,0,.55);overflow:hidden;border:1px solid rgba(255,255,255,.5)}
+  .panel .top{background:#F6F8F7;padding:14px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+  .panel .top b{font-size:14px;color:var(--ink)}
+  .panel .ph{font-size:12px;color:var(--muted)}
+  .panel .body{padding:16px 18px;display:grid;gap:10px}
+  .row{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-radius:12px;border:1px solid var(--line)}
+  .row .l{display:flex;align-items:center;gap:11px;font-size:14px;font-weight:600}
+  .tdot{width:9px;height:9px;border-radius:50%}
+  .row .amt{font-weight:700;font-size:14px}
+  .row.alert{background:#FCF4E7;border-color:#F0DFBE}
+  .balance{display:flex;align-items:baseline;justify-content:space-between;padding:4px 4px 8px}
+  .balance .v{font-size:26px;font-weight:800}
+  /* trust band */
+  .tband{background:#082C21;color:#9FBBB0;border-top:1px solid rgba(255,255,255,.08)}
+  .tband .wrap{display:flex;flex-wrap:wrap;gap:30px;justify-content:center;padding:18px 28px;font-size:14px;font-weight:600}
+  .tband span{display:flex;gap:9px;align-items:center}
+  .tband .chk{color:var(--gold)}
+  section{padding:64px 0}
+  .kicker{color:var(--gold-d);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:13px}
+  .h2{font-size:36px;letter-spacing:-.02em;font-weight:800;margin:8px 0 8px}
+  .lead{color:var(--muted);font-size:18px;margin-bottom:34px;max-width:54ch}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+  .ic{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;margin-bottom:16px;background:var(--mint);color:var(--forest)}
+  .card h3{font-size:19px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15.5px}
+  /* stats strip */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:8px}
+  .stat{padding:26px;text-align:center;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat .n{font-size:30px;font-weight:800;color:var(--forest)}
+  .stat .t{color:var(--muted);font-size:14px;margin-top:4px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:28px}
+  .num{width:42px;height:42px;border-radius:11px;background:var(--forest);color:#fff;display:grid;place-items:center;font-weight:800;margin-bottom:14px}
+  .step h3{font-size:18px;margin-bottom:6px}.step p{color:var(--muted);font-size:15px}
+  .dignity{background:var(--mint);border:1px solid var(--line);border-radius:20px;padding:46px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+  .dignity h2{font-size:32px;letter-spacing:-.02em;margin-bottom:12px}
+  .dignity ul{list-style:none;display:grid;gap:12px;margin-top:8px}
+  .dignity li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
+  .dignity .chk{width:24px;height:24px;flex:none;border-radius:50%;background:var(--forest);color:#fff;display:grid;place-items:center;font-size:12px;margin-top:1px}
+  .quote{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;font-size:18px;line-height:1.5}
+  .quote .who{margin-top:14px;font-size:14px;color:var(--muted);font-weight:700}
+  footer{padding:30px 0;color:var(--muted);font-size:13px;text-align:center;border-top:1px solid var(--line)}
+  .label{position:fixed;top:14px;right:14px;background:#fff;color:#0B3D2E;font-size:12px;font-weight:800;padding:8px 12px;border-radius:999px;box-shadow:0 6px 16px -8px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="label">RIKTNING C · Trygg Auktoritet</div>
+
+<div class="band">
+  <div class="wrap">
+    <nav>
+      <div class="logo"><span class="dot">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" fill="#0B3D2E"/></svg>
+      </span>Trygg Ekonomi</div>
+      <div class="navlinks">
+        <a>Så funkar det</a><a>Säkerhet</a><a>Pris</a>
+        <a class="pill btn-ghost" style="padding:9px 16px;font-size:14px">Logga in</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <span class="eyebrow">★ Byggd på BankID & PSD2</span>
+        <h1>Trygghet för föräldrarnas ekonomi — <span class="hl">på riktigt</span>.</h1>
+        <p class="sub">Banknivå-säker insyn med samtycke. Du ser tidiga varningstecken; din förälder behåller all kontroll.</p>
+        <div class="cta">
+          <a class="pill btn-gold">Kom igång med BankID</a>
+          <a class="pill btn-ghost">Boka demo</a>
+        </div>
+        <div class="bankid"><span class="bx">BankID</span> Stark autentisering · endast läsbehörighet · GDPR</div>
+      </div>
+      <div class="panel">
+        <div class="top"><b>Översikt — Anna Andersson</b><span class="ph">Uppdaterad nyss</span></div>
+        <div class="body">
+          <div class="balance"><span class="ph">Lönekonto · •••• 4821</span><span class="v">48 250 kr</span></div>
+          <div class="row alert"><span class="l"><span class="tdot" style="background:#C2603F"></span>Stort uttag</span><span class="amt">−15 000 kr</span></div>
+          <div class="row"><span class="l"><span class="tdot" style="background:#D8A24A"></span>Ny mottagare</span><span class="amt">SnabbLån AB</span></div>
+          <div class="row"><span class="l"><span class="tdot" style="background:#0B3D2E"></span>Hyra betald</span><span class="amt">−8 500 kr</span></div>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div class="tband">
+    <div class="wrap">
+      <span><span class="chk">✓</span> Endast läsbehörighet</span>
+      <span><span class="chk">✓</span> BankID-autentisering</span>
+      <span><span class="chk">✓</span> Bygger på Tinks AISP-licens</span>
+      <span><span class="chk">✓</span> GDPR · krypterat</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section>
+    <div class="kicker">Varför Trygg Ekonomi</div>
+    <div class="h2">Trygghet du kan lita på</div>
+    <p class="lead">Inte ett bedrägelilarm — en samtyckesbaserad trygghet byggd på samma infrastruktur som bankerna.</p>
+    <div class="grid3">
+      <div class="card">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.3-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.7-7 10-7 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        <h3>Lugn för dig</h3>
+        <p>Tidig varning vid avvikelser — stora uttag, nya mottagare, missade räkningar, fallande saldo.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        <h3>Värdighet för föräldern</h3>
+        <p>Din förälder äger samtycket, ser exakt vad som delas och kan återkalla direkt.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Byggt på licens</h3>
+        <p>Vi flyttar aldrig pengar. Läsåtkomst via Tinks reglerade AISP-licens — inget eget tillstånd krävs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="stats">
+      <div class="stat"><div class="n">232 862</div><div class="t">anmälda bedrägeribrott i Sverige 2025</div></div>
+      <div class="stat"><div class="n">+112 %</div><div class="t">kvinnliga målsägare 65+ sedan 2019</div></div>
+      <div class="stat"><div class="n">180 dgr</div><div class="t">samtycke enligt PSD2 — förnyas av föräldern</div></div>
+    </div>
+  </section>
+
+  <section style="padding-top:6px">
+    <div class="kicker">Tre steg</div>
+    <div class="h2">Så funkar det</div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Bjud in din förälder</h3><p>Skapa en länk och dela via SMS eller e-post.</p></div>
+      <div class="step"><div class="num">2</div><h3>Godkännande med BankID</h3><p>Ett swipe. Hon ser exakt vad som delas. Endast läsbehörighet.</p></div>
+      <div class="step"><div class="num">3</div><h3>Diskreta varningar</h3><p>Du notifieras bara när något avviker.</p></div>
+    </div>
+  </section>
+
+  <section style="padding-top:6px">
+    <div class="dignity">
+      <div>
+        <h2>Din förälder bestämmer allt</h2>
+        <p style="color:var(--muted);font-size:17px">Integritet är inte en eftertanke — det är grunden i hur tjänsten är byggd.</p>
+        <ul>
+          <li><span class="chk">✓</span> Ser i realtid vad som delas och med vem</li>
+          <li><span class="chk">✓</span> Kan dra tillbaka åtkomsten direkt</li>
+          <li><span class="chk">✓</span> Ingen kan flytta pengar — endast läsa</li>
+        </ul>
+      </div>
+      <div class="quote">
+        "Jag ville bara veta att allt var okej med mamma. Nu slipper jag oroa mig — och hon känner sig respekterad."
+        <div class="who">Karin, 54 — dotter och användare</div>
+      </div>
+    </div>
+  </section>
+</div>
+<footer>Endast läsbehörighet · Samtyckesbaserat · GDPR — inga pengar kan flyttas via tjänsten.</footer>
+</body>
+</html>
