@@ -27,24 +27,28 @@ M1→M5 milestone plan.
   per-CareLink authorization on every access, immutable audit log, rate limiting,
   CSRF-protected OAuth state, security headers. No raw personal numbers stored.
 
-## Quick start (mock mode — no external accounts needed)
+## Öppna programmet (snabbast — mock-läge, inga externa konton)
+
+Förutsätter **Node 18+** och **Docker** (för en lokal Postgres). På din egen dator:
 
 ```bash
 cd trygg-ekonomi
-npm install
+npm install      # installerar beroenden
+npm run setup    # skapar .env + nycklar, startar DB, migrerar, seedar
+npm run dev      # startar appen
+```
 
-# 1. Start Postgres (or point DATABASE_URL at your own)
-docker compose up -d
+Öppna sedan **<http://localhost:3000>** i webbläsaren.
 
-# 2. Configure env
-cp .env.example .env
-# Generate keys:
-node -e "console.log('APP_ENCRYPTION_KEY='+require('crypto').randomBytes(32).toString('base64'))"
-node -e "console.log('SESSION_SECRET='+require('crypto').randomBytes(32).toString('base64'))"
-# Paste both into .env. PROVIDER_MODE stays "mock".
+> Har du ingen Docker? Starta en egen Postgres, peka `DATABASE_URL` i `.env`
+> mot den och kör `npm run setup` igen. `npm run setup` är säkert att köra om.
 
-# 3. Migrate + run
-npm run db:migrate
+### Quick start (manuellt, om du hellre gör stegen själv)
+
+```bash
+docker compose up -d            # Postgres
+cp .env.example .env            # PROVIDER_MODE stannar "mock"
+npm run db:migrate              # skapa databasen
 npm run dev
 ```
 
