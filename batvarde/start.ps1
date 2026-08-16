@@ -41,7 +41,12 @@ if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
     exit 1
 }
 
-$nodeMajor = [int](node -p 'process.versions.node.split(".")[0]')
+# Versionen delas i PowerShell, inte i JavaScript: PowerShell plockar bort
+# citattecken i argument till program, så node -p '...split(".")...' kom fram
+# som split(.) och blev ett syntaxfel.
+$nodeVersion = (node -p "process.versions.node")
+$nodeMajor = [int]($nodeVersion.Split('.')[0])
+
 if ($nodeMajor -lt 18) {
     Warn "Node $nodeMajor ar for gammal, minst 18 behovs. Uppdatera fran https://nodejs.org."
     Read-Host 'Tryck enter for att stanga' | Out-Null
@@ -77,7 +82,7 @@ if (-not (Test-Path 'data\boats.db')) {
 
 $listings = 0
 try {
-    $listings = [int](node -e "const {PrismaClient}=require('@prisma/client');new PrismaClient().listing.count().then(n=>{console.log(n);process.exit(0)}).catch(()=>{console.log(0);process.exit(0)})")
+    $listings = [int](node scripts\count-listings.mjs)
 } catch { $listings = 0 }
 
 if ($listings -lt 50 -and (Test-Path 'data\seed_demo.csv')) {
@@ -87,7 +92,9 @@ if ($listings -lt 50 -and (Test-Path 'data\seed_demo.csv')) {
     Warn 'De ar inte marknadsdata och ska aldrig visas for nagon utomstaende.'
     $answer = Read-Host 'Fylla pa med demodata? [j/N]'
     if ($answer -match '^[jJ]') {
-        npm run db:seed -- data/seed_demo.csv
+        # Direkt mot tsx i stället för "npm run db:seed --": PowerShell behandlar
+        # -- som slut på parametrar och argumentet efter kan tappas bort.
+        npx tsx prisma/seed.ts data/seed_demo.csv
         if (Get-Command python -ErrorAction SilentlyContinue) {
             python pipeline\stats.py
         } else {

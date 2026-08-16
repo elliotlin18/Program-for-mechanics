@@ -67,14 +67,7 @@ if [ ! -f data/boats.db ]; then
   npm run db:seed
 fi
 
-LISTINGS="$(
-  node -e "
-    const {PrismaClient} = require('@prisma/client');
-    new PrismaClient().listing.count()
-      .then(n => { console.log(n); process.exit(0) })
-      .catch(() => { console.log(0); process.exit(0) });
-  " 2>/dev/null || echo 0
-)"
+LISTINGS="$(node scripts/count-listings.mjs 2>/dev/null || echo 0)"
 
 # data/seed.csv innehåller från början bara fem EXEMPEL-rader. Med så lite data
 # ser skärmarna tomma ut, så vi erbjuder demodatan – men bara efter en fråga,
