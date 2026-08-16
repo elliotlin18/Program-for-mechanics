@@ -85,13 +85,17 @@ if [ "$LISTINGS" -lt 50 ] && [ -f data/seed_demo.csv ]; then
   warn "data/seed_demo.csv innehåller 190 PÅHITTADE annonser att bygga och testa med."
   warn "De är inte marknadsdata och ska aldrig visas för någon utomstående."
   # Läs från terminalen, inte stdin. Startas skriptet via "curl | bash" är stdin
-  # pipen med skriptet i, och frågan skulle besvaras med tystnad.
+  # pipen med skriptet i, och frågan skulle besvaras med tystnad. Att /dev/tty
+  # går att testa med -r betyder inte att den går att öppna, så vi provar.
+  # Testet görs i en subshell: en misslyckad omdirigering skriver sitt felmeddelande
+  # innan ett 2>/dev/null på samma rad hinner gälla.
   ANSWER="n"
-  if [ -r /dev/tty ]; then
+  if ( : < /dev/tty ) 2>/dev/null; then
     printf "Fylla på med demodata? [j/N] "
     read -r ANSWER < /dev/tty || ANSWER="n"
   else
-    warn "Ingen terminal att fråga i – hoppar över. Kör 'npm run db:seed -- data/seed_demo.csv' själv."
+    warn "Ingen terminal att fråga i – hoppar över demodatan."
+    warn "Kör 'npm run db:seed -- data/seed_demo.csv' när du vill ha den."
   fi
 
   case "$ANSWER" in
