@@ -8,9 +8,30 @@
 - pipeline/aliases.yaml – de tio startmodellerna
 - data/seed.csv – seed-data (byt EXEMPEL-raderna mot 100–200 riktiga från Blocket)
 
+## Installera – en gång
+
+**Mac och Linux.** Klistra in i Terminal:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/elliotlin18/Program-for-mechanics/claude/batvarde-project-setup-ub31pi/batvarde/install.sh | bash
+```
+
+**Windows.** Ladda ner [`install.bat`](https://raw.githubusercontent.com/elliotlin18/Program-for-mechanics/claude/batvarde-project-setup-ub31pi/batvarde/install.bat)
+och dubbelklicka den.
+
+Installationen hämtar koden till `~/Batvarde`, lägger en **Båtvärde-ikon på skrivbordet** och
+startar programmet. Kräver git och Node.js 18+; saknas något säger den till med länk.
+
+Vill du läsa skriptet innan du kör det – rimligt – hämta det först med `curl -O <adressen ovan>`,
+öppna filen och kör `bash install.sh`.
+
 ## Starta
 
-Dubbelklicka **`start.command`** (Mac) eller **`start.bat`** (Windows). På Linux: `./start.sh`.
+Dubbelklicka **Båtvärde-ikonen på skrivbordet**. Den hämtar senaste versionen automatiskt och
+startar. Sätt `BATVARDE_NO_UPDATE=1` om du vill hoppa över uppdateringen.
+
+Utan ikon går det lika bra att dubbelklicka **`start.command`** (Mac) eller **`start.bat`**
+(Windows) i projektmappen. På Linux: `./start.sh`.
 
 Filen installerar paket, skapar databasen, läser in `data/seed.csv`, startar servern och öppnar
 webbläsaren. Nästa gång hoppar den över allt som redan är gjort och startar direkt. Är port 3000

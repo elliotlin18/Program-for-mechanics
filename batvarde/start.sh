@@ -10,6 +10,27 @@ warn() { printf "\033[33m%s\033[0m\n" "$1"; }
 
 say "Båtvärde"
 
+# --- Hämta senaste versionen --------------------------------------------------
+# Hoppas över med BATVARDE_NO_UPDATE=1. --ff-only gör att egna ändringar aldrig
+# skrivs över – då lämnas koden som den är.
+
+if [ "${BATVARDE_NO_UPDATE:-0}" != "1" ] && git rev-parse --git-dir >/dev/null 2>&1; then
+  BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo '')"
+  if [ -n "$BRANCH" ] && git remote get-url origin >/dev/null 2>&1; then
+    if git fetch origin "$BRANCH" --quiet 2>/dev/null; then
+      BEHIND="$(git rev-list --count "HEAD..origin/$BRANCH" 2>/dev/null || echo 0)"
+      if [ "$BEHIND" -gt 0 ]; then
+        if git merge --ff-only "origin/$BRANCH" --quiet 2>/dev/null; then
+          echo "Uppdaterade till senaste versionen ($BEHIND nya ändringar)"
+          rm -rf .next
+        else
+          warn "$BEHIND nya ändringar finns, men du har egna ändringar. Kör som den är."
+        fi
+      fi
+    fi
+  fi
+fi
+
 # --- Krav ---------------------------------------------------------------------
 
 if ! command -v node >/dev/null 2>&1; then
