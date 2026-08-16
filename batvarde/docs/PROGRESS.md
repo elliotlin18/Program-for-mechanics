@@ -49,6 +49,15 @@ Gör så här första gången du kör mot skarp sajt: `python pipeline/scrape.py
 
 Kvarstår: själva hämtningen av en ny annons är otestad av samma skäl som i steg 3 – ingen nätverksåtkomst i byggmiljön. Databasvägen, det manuella formuläret och hela felhanteringen är verifierade, och `fetch_ad.py` är verifierad mot cachad HTML (`--offline`).
 
+## Steg 6 – Startsida och polish (klart)
+- `/` har rubrik, sökfält för modell, knapparna "Värdera min båt" och "Kolla en annons", tre "heta modeller"-kort med median, trend och antal observationer, och därunder alla modeller. Sökningen är en vanlig GET-form som filtrerar på servern – ingen klient-JS.
+- `/sa-raknar-vi` i tre stycken: var datan kommer ifrån, vad "troligen sålt" betyder och hur intervallen räknas. Sidan säger rakt ut att borttagen annons inte är samma sak som såld båt, och att prototypen inte ska användas som beslutsunderlag. Länkad från sidfoten på varje sida.
+- Trenden räknas i `priceTrendPct()`: snittet av de fyra sista veckorna mot de fyra första, null när underlaget inte räcker till båda ändarna.
+- Verifierat: hela demoscriptet i `docs/PROTOTYP.md` avsnitt 6 klickbart från start till slut, alla tio modellsidor plus `/`, `/?q=`, `/vardera`, `/kolla` och `/sa-raknar-vi` svarar 200, 40 tester gröna (17 TypeScript + 23 Python), `typecheck`, `lint` och `build` går igenom.
+
+### Ett val värt att känna till
+Trendpilen på startsidan är avsiktligt gråtonad i stället för grön/röd. Grönt och rött betyder "rimligt pris" i annonskollen, och samma färger med en annan innebörd på startsidan gör färgkoden otydlig i just det ögonblick i demot när den ska bära poängen.
+
 ## Öppna punkter inför nästa steg
 - **`data/seed_demo.csv` är påhittad demodata**, genererad för att kunna bygga och testa UI:t innan riktig data finns. Källa `demo`, URL:er på `example.invalid`. Visa den aldrig för Matija som marknadsdata – seeda om från `data/seed.csv` när de riktiga raderna finns.
 - "Median dagar på marknaden" blir 14 för alla modeller så länge datan bara är seedad, eftersom seed-regeln sätter `removed_at = first_seen + 14 dagar`. Riktig spridning kommer när `detect_removed.py` fått köra ett par dagar.
@@ -57,4 +66,9 @@ Kvarstår: själva hämtningen av en ny annons är otestad av samma skäl som i 
 - Statistiken finns i två implementationer: `lib/stats.ts` (som seed-skriptet använder) och `pipeline/stats.py`. De ska ge identiska siffror – ändras den ena måste den andra ändras med.
 
 ## Nästa steg
-Kör `python pipeline/scrape.py --limit 1` mot skarp sajt och stäm av `pipeline/blocket.py` (se "Vad som återstår i steg 3"). Därefter steg 5 enligt `docs/PROTOTYP.md`: `/kolla` (annonskollen).
+Steg 0–6 är byggda. Två saker återstår innan prototypen kan visas för någon utomstående:
+
+1. **Kör `python pipeline/scrape.py --limit 1` mot skarp sajt och stäm av `pipeline/blocket.py`.** Se "Vad som återstår i steg 3". Det är den enda kod som aldrig mött Blockets riktiga HTML, och den bär både scrapern och annonskollens hämtning.
+2. **Byt ut `data/seed.csv` mot 100–200 riktiga rader** och seeda om. Så länge demon körs på `data/seed_demo.csv` visar den påhittade siffror.
+
+I demot går det att klistra in vilken URL som helst ur seed-datan i `/kolla` – den vägen läser ur databasen och behöver ingen nätverksåtkomst.

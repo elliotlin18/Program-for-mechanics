@@ -20,8 +20,8 @@ npm test               # tester för värderingen
 npm run dev            # http://localhost:3000
 ```
 
-Klart hittills: modellsidan `/bat/[brand]/[model]` (steg 1) och `/vardera` (steg 4).
-`/` är ett enkelt modellindex tills startsidan byggs i steg 6.
+Skärmar: `/` (startsida med sök och heta modeller), `/bat/[brand]/[model]` (modellsida),
+`/vardera` (värdering), `/kolla` (annonskollen) och `/sa-raknar-vi`.
 
 ## Pipeline
 

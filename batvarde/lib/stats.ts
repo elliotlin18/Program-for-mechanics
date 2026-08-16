@@ -125,6 +125,27 @@ export function computeModelStats(
 
 export type WeekPoint = { week: string; median: number | null; antal: number }
 
+/** Hur många veckor i var ände som jämförs när trenden räknas. */
+export const TREND_WEEKS = 4
+
+/**
+ * Prisutveckling i procent: snittet av de sista veckorna mot snittet av de
+ * första. Null när underlaget inte räcker till båda ändarna.
+ */
+export function priceTrendPct(points: WeekPoint[]): number | null {
+  const withData = points.filter((point) => point.median !== null)
+  if (withData.length < TREND_WEEKS * 2) return null
+
+  const mean = (values: WeekPoint[]) =>
+    values.reduce((sum, point) => sum + point.median!, 0) / values.length
+
+  const first = mean(withData.slice(0, TREND_WEEKS))
+  const last = mean(withData.slice(-TREND_WEEKS))
+  if (first === 0) return null
+
+  return Math.round(((last - first) / first) * 1000) / 10
+}
+
 /**
  * Medianpris per vecka för annonser som låg ute den veckan.
  * Ger grafen på modellsidan – CHART_WEEKS veckor bakåt.
