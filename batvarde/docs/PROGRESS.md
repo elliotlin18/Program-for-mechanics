@@ -28,6 +28,16 @@ Sessionen som byggde det här kom inte ut på nätet – nätverkspolicyn svarad
 
 Gör så här första gången du kör mot skarp sajt: `python pipeline/scrape.py --limit 1`. Fungerar det står det `via json-ld` (eller `__NEXT_DATA__`/`meta`) i utskriften. Fungerar det inte får du diagnosen, och då är det bara `pipeline/blocket.py` som behöver ändras – resten av kedjan är testad. Blockerar Blocket: skriv om samma fil mot sokbat.se, inget annat.
 
+## Steg 4 – Värdera min båt (klart)
+- `/vardera` med formulär: modell (dropdown ur databasen, grupperad på märke), årsmodell, motormärke, hk, motortimmar (valfritt), region och skick 1–5. Region- och motorlistorna byggs av `SELECT DISTINCT` på annonserna i stället för hårdkodade listor, så de speglar alltid vad vi har data för. Ingen e-post, inget konto.
+- Beräkningen ligger i `lib/valuation.ts`: annonser för modellen inom ±2 årsmodeller de senaste 90 dagarna, borttagna annonser räknas som två observationer, skick justerar ±5 % per steg från 3. Svaret är median, p25–p75, antal observationer uppdelat på aktiva och borttagna, konfidens och de fem närmaste jämförbara annonserna.
+- Verifierat: 11 tester (`npm test`), `typecheck`, `lint` och `build` går igenom, och sidan svarar 200 på tomt formulär, okänd modell, årsmodell utan träffar samt skräpinput (`ar=abc`, `skick=9`).
+
+### Två val värda att känna till
+- **Formuläret är en vanlig GET-form utan JavaScript.** Resultatet renderas på servern från query-parametrarna, så en värdering har en egen URL som går att skicka vidare eller lägga i en demo.
+- **Värdet avrundas till närmaste tusen.** En värdering på kronan (792 488 kr) låtsas om en precision vi inte har. Rådata före skickjusteringen avrundas inte, så siffran går att stämma av mot annonserna.
+- Viktningen är gjord genom att räkna en borttagen annons som två observationer, inte med en egen viktad percentilfunktion. Det gör att `/vardera` och modellsidan använder exakt samma `percentile()` och blir lätt att förklara på en "Så räknar vi"-sida i steg 6.
+
 ## Öppna punkter inför nästa steg
 - **`data/seed_demo.csv` är påhittad demodata**, genererad för att kunna bygga och testa UI:t innan riktig data finns. Källa `demo`, URL:er på `example.invalid`. Visa den aldrig för Matija som marknadsdata – seeda om från `data/seed.csv` när de riktiga raderna finns.
 - "Median dagar på marknaden" blir 14 för alla modeller så länge datan bara är seedad, eftersom seed-regeln sätter `removed_at = first_seen + 14 dagar`. Riktig spridning kommer när `detect_removed.py` fått köra ett par dagar.
@@ -36,4 +46,4 @@ Gör så här första gången du kör mot skarp sajt: `python pipeline/scrape.py
 - Statistiken finns i två implementationer: `lib/stats.ts` (som seed-skriptet använder) och `pipeline/stats.py`. De ska ge identiska siffror – ändras den ena måste den andra ändras med.
 
 ## Nästa steg
-Kör `python pipeline/scrape.py --limit 1` mot skarp sajt och stäm av `pipeline/blocket.py` (se ovan). Därefter steg 4 enligt `docs/PROTOTYP.md`: `/vardera`.
+Kör `python pipeline/scrape.py --limit 1` mot skarp sajt och stäm av `pipeline/blocket.py` (se "Vad som återstår i steg 3"). Därefter steg 5 enligt `docs/PROTOTYP.md`: `/kolla` (annonskollen).

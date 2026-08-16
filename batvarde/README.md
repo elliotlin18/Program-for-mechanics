@@ -16,8 +16,12 @@ cp .env.example .env   # DATABASE_URL till data/boats.db
 npm run db:push        # skapar data/boats.db enligt prisma/schema.prisma
 npm run db:seed        # läser pipeline/aliases.yaml + data/seed.csv
 npm run db:count       # verifierar modeller, annonser och statistik
+npm test               # tester för värderingen
 npm run dev            # http://localhost:3000
 ```
+
+Klart hittills: modellsidan `/bat/[brand]/[model]` (steg 1) och `/vardera` (steg 4).
+`/` är ett enkelt modellindex tills startsidan byggs i steg 6.
 
 ## Pipeline
 

@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
-    "db:count": "tsx scripts/count.ts"
+    "db:count": "tsx scripts/count.ts",
+    "test": "node --import tsx --test lib/valuation.test.ts"
   },
   "dependencies": {
     "@prisma/client": "5.22.0",

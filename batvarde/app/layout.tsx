@@ -17,6 +17,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               Båtvärde
             </Link>
             <span className="text-sm text-muted-foreground">Vad går båten för?</span>
+            <Link href="/vardera" className="ml-auto text-sm underline">
+              Värdera min båt
+            </Link>
           </div>
         </header>
         <main className="mx-auto max-w-5xl px-6 py-8">{children}</main>
