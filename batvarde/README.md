@@ -8,7 +8,20 @@
 - pipeline/aliases.yaml – de tio startmodellerna
 - data/seed.csv – seed-data (byt EXEMPEL-raderna mot 100–200 riktiga från Blocket)
 
-## Kom igång
+## Starta
+
+Dubbelklicka **`start.command`** (Mac) eller **`start.bat`** (Windows). På Linux: `./start.sh`.
+
+Filen installerar paket, skapar databasen, läser in `data/seed.csv`, startar servern och öppnar
+webbläsaren. Nästa gång hoppar den över allt som redan är gjort och startar direkt. Är port 3000
+upptagen tar den nästa lediga. Stäng med Ctrl+C i fönstret.
+
+Är `data/seed.csv` fortfarande de fem EXEMPEL-raderna frågar den om du vill fylla på med
+`data/seed_demo.csv` – 190 påhittade annonser, se avsnittet Demodata nedan.
+
+Node.js 18 eller senare krävs. Saknas det säger startfilen till och länkar till nedladdningen.
+
+## Kom igång manuellt
 
 ```bash
 npm install
