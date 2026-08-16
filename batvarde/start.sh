@@ -84,8 +84,16 @@ if [ "$LISTINGS" -lt 50 ] && [ -f data/seed_demo.csv ]; then
   warn "Bara $LISTINGS annonser i databasen. Skärmarna blir tunna med så lite underlag."
   warn "data/seed_demo.csv innehåller 190 PÅHITTADE annonser att bygga och testa med."
   warn "De är inte marknadsdata och ska aldrig visas för någon utomstående."
-  printf "Fylla på med demodata? [j/N] "
-  read -r ANSWER || ANSWER="n"
+  # Läs från terminalen, inte stdin. Startas skriptet via "curl | bash" är stdin
+  # pipen med skriptet i, och frågan skulle besvaras med tystnad.
+  ANSWER="n"
+  if [ -r /dev/tty ]; then
+    printf "Fylla på med demodata? [j/N] "
+    read -r ANSWER < /dev/tty || ANSWER="n"
+  else
+    warn "Ingen terminal att fråga i – hoppar över. Kör 'npm run db:seed -- data/seed_demo.csv' själv."
+  fi
+
   case "$ANSWER" in
     [jJ]*)
       npm run db:seed -- data/seed_demo.csv
