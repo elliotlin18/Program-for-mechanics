@@ -13,11 +13,12 @@
 **Windows.** Klistra in i PowerShell:
 
 ```powershell
-irm https://raw.githubusercontent.com/elliotlin18/Program-for-mechanics/claude/batvarde-project-setup-ub31pi/batvarde/install.ps1 | iex
+irm https://raw.githubusercontent.com/elliotlin18/Program-for-mechanics/claude/batvarde-project-setup-ub31pi/batvarde/install.ps1 -OutFile "$env:TEMP\batvarde-install.ps1"; powershell -ExecutionPolicy Bypass -File "$env:TEMP\batvarde-install.ps1"
 ```
 
 I PowerShell är `curl` ett alias för `Invoke-WebRequest` och förstår varken `-fsSL` eller
-`| bash` – använd raden ovan, inte curl-raden.
+`| bash` – använd raden ovan, inte curl-raden. Filen sparas i temp-mappen först, så du kan
+öppna och läsa den innan du kör om du vill.
 
 **Mac och Linux.** Klistra in i Terminal:
 

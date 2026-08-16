@@ -1,6 +1,6 @@
 ﻿# Installerar Båtvärde på Windows och startar det. Kör en gång i PowerShell:
 #
-#   irm https://raw.githubusercontent.com/elliotlin18/Program-for-mechanics/claude/batvarde-project-setup-ub31pi/batvarde/install.ps1 | iex
+ iex$| iex
 #
 # Efter det ligger en genväg på skrivbordet som startar programmet med ett dubbelklick.
 # Byt installationsmapp med $env:BATVARDE_DIR.
