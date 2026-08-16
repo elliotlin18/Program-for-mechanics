@@ -1,0 +1,6 @@
+# Radslut per filtyp. Batch-filer kan bete sig underligt med LF på Windows,
+# och shell-skript fungerar inte alls med CRLF.
+*.sh      text eol=lf
+*.command text eol=lf
+*.bat     text eol=crlf
+*.ps1     text eol=crlf

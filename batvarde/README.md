@@ -10,14 +10,20 @@
 
 ## Installera – en gång
 
+**Windows.** Klistra in i PowerShell:
+
+```powershell
+irm https://raw.githubusercontent.com/elliotlin18/Program-for-mechanics/claude/batvarde-project-setup-ub31pi/batvarde/install.ps1 | iex
+```
+
+I PowerShell är `curl` ett alias för `Invoke-WebRequest` och förstår varken `-fsSL` eller
+`| bash` – använd raden ovan, inte curl-raden.
+
 **Mac och Linux.** Klistra in i Terminal:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/elliotlin18/Program-for-mechanics/claude/batvarde-project-setup-ub31pi/batvarde/install.sh | bash
 ```
-
-**Windows.** Ladda ner [`install.bat`](https://raw.githubusercontent.com/elliotlin18/Program-for-mechanics/claude/batvarde-project-setup-ub31pi/batvarde/install.bat)
-och dubbelklicka den.
 
 Installationen hämtar koden till `~/Batvarde`, lägger en **Båtvärde-ikon på skrivbordet** och
 startar programmet. Kräver git och Node.js 18+; saknas något säger den till med länk.
@@ -32,6 +38,9 @@ startar. Sätt `BATVARDE_NO_UPDATE=1` om du vill hoppa över uppdateringen.
 
 Utan ikon går det lika bra att dubbelklicka **`start.command`** (Mac) eller **`start.bat`**
 (Windows) i projektmappen. På Linux: `./start.sh`.
+
+Windows-filerna (`install.bat`, `start.bat`) är tunna omslag kring `install.ps1` och `start.ps1`
+– portkoll, väntan på servern och frågan om demodata går inte att göra pålitligt i batch.
 
 Filen installerar paket, skapar databasen, läser in `data/seed.csv`, startar servern och öppnar
 webbläsaren. Nästa gång hoppar den över allt som redan är gjort och startar direkt. Är port 3000
