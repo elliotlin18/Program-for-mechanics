@@ -1,0 +1,12 @@
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+
+# Databas och cache byggs lokalt, checkas aldrig in
+data/boats.db
+data/boats.db-journal
+data/cache/
+
+.env
+.DS_Store

@@ -1,0 +1,6 @@
+source,url,brand,model,year,price,engine_brand,engine_hp,hours,region,first_seen,status
+blocket,https://www.blocket.se/annons/EXEMPEL1,Yamarin,79 DC,2019,895000,Yamaha,300,240,Stockholm,2026-08-01,active
+blocket,https://www.blocket.se/annons/EXEMPEL2,Yamarin,79 DC,2016,649000,Yamaha,250,410,Västra Götaland,2026-07-20,active
+blocket,https://www.blocket.se/annons/EXEMPEL3,Buster,XL,2018,329000,Yamaha,150,180,Skåne,2026-07-28,removed
+blocket,https://www.blocket.se/annons/EXEMPEL4,Nimbus,27,2015,1195000,Volvo Penta,300,520,Stockholm,2026-07-15,active
+blocket,https://www.blocket.se/annons/EXEMPEL5,Albin,Vega,1974,45000,Volvo Penta,10,,Uppsala,2026-08-05,active

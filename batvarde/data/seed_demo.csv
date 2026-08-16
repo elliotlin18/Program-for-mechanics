@@ -1,0 +1,191 @@
+source,url,brand,model,year,price,engine_brand,engine_hp,hours,region,first_seen,status
+demo,https://example.invalid/demo/yamarin-0001,Yamarin,79 DC,2022,1122000,Honda,247,491,Skåne,2026-06-02,active
+demo,https://example.invalid/demo/yamarin-0002,Yamarin,79 DC,2023,1318000,Mercury,251,281,Stockholm,2026-05-30,active
+demo,https://example.invalid/demo/yamarin-0003,Yamarin,79 DC,2016,645000,Honda,296,433,Östergötland,2026-07-09,active
+demo,https://example.invalid/demo/yamarin-0004,Yamarin,79 DC,2022,1065000,Honda,204,242,Halland,2026-07-17,removed
+demo,https://example.invalid/demo/yamarin-0005,Yamarin,79 DC,2013,577000,Honda,276,489,Halland,2026-07-23,active
+demo,https://example.invalid/demo/yamarin-0006,Yamarin,79 DC,2021,975000,Mercury,231,109,Värmland,2026-06-25,active
+demo,https://example.invalid/demo/yamarin-0007,Yamarin,79 DC,2016,714000,Honda,246,168,Uppsala,2026-07-24,active
+demo,https://example.invalid/demo/yamarin-0008,Yamarin,79 DC,2014,538000,Yamaha,261,477,Uppsala,2026-05-29,removed
+demo,https://example.invalid/demo/yamarin-0009,Yamarin,79 DC,2021,981000,Mercury,260,111,Östergötland,2026-05-22,active
+demo,https://example.invalid/demo/yamarin-0010,Yamarin,79 DC,2022,1060000,Mercury,287,382,Västra Götaland,2026-05-12,active
+demo,https://example.invalid/demo/yamarin-0011,Yamarin,79 DC,2021,1050000,Mercury,291,377,Halland,2026-05-29,removed
+demo,https://example.invalid/demo/yamarin-0012,Yamarin,79 DC,2014,631000,Mercury,210,256,Kalmar,2026-06-18,active
+demo,https://example.invalid/demo/yamarin-0013,Yamarin,79 DC,2019,877000,Honda,238,341,Skåne,2026-07-17,removed
+demo,https://example.invalid/demo/yamarin-0014,Yamarin,79 DC,2021,841000,Yamaha,243,627,Östergötland,2026-06-25,removed
+demo,https://example.invalid/demo/yamarin-0015,Yamarin,79 DC,2021,953000,Honda,264,172,Kalmar,2026-05-16,removed
+demo,https://example.invalid/demo/yamarin-0016,Yamarin,79 DC,2021,1003000,Mercury,281,314,Blekinge,2026-06-30,active
+demo,https://example.invalid/demo/yamarin-0017,Yamarin,79 DC,2018,919000,Mercury,288,375,Halland,2026-06-14,active
+demo,https://example.invalid/demo/yamarin-0018,Yamarin,79 DC,2013,521000,Mercury,259,151,Stockholm,2026-05-12,removed
+demo,https://example.invalid/demo/yamarin-0019,Yamarin,79 DC,2020,931000,Yamaha,205,548,Värmland,2026-07-28,active
+demo,https://example.invalid/demo/yamarin-0020,Yamarin,79 DC,2022,957000,Honda,280,623,Halland,2026-07-14,removed
+demo,https://example.invalid/demo/yamarin-0021,Yamarin,79 DC,2013,627000,Honda,222,143,Halland,2026-07-25,active
+demo,https://example.invalid/demo/yamarin-0022,Yamarin,79 DC,2013,626000,Mercury,255,614,Stockholm,2026-06-25,active
+demo,https://example.invalid/demo/buster-0023,Buster,XL,2017,275000,Yamaha,187,256,Södermanland,2026-06-13,active
+demo,https://example.invalid/demo/buster-0024,Buster,XL,2012,235000,Mercury,171,758,Blekinge,2026-07-10,active
+demo,https://example.invalid/demo/buster-0025,Buster,XL,2016,278000,Mercury,163,413,Östergötland,2026-06-25,active
+demo,https://example.invalid/demo/buster-0026,Buster,XL,2018,318000,Mercury,143,145,Skåne,2026-07-02,active
+demo,https://example.invalid/demo/buster-0027,Buster,XL,2022,489000,Mercury,192,318,Halland,2026-05-19,active
+demo,https://example.invalid/demo/buster-0028,Buster,XL,2019,323000,Mercury,190,164,Skåne,2026-06-29,active
+demo,https://example.invalid/demo/buster-0029,Buster,XL,2015,274000,Mercury,182,89,Uppsala,2026-07-12,active
+demo,https://example.invalid/demo/buster-0030,Buster,XL,2015,243000,Yamaha,150,277,Värmland,2026-05-21,active
+demo,https://example.invalid/demo/buster-0031,Buster,XL,2019,319000,Mercury,168,772,Blekinge,2026-07-29,active
+demo,https://example.invalid/demo/buster-0032,Buster,XL,2014,263000,Yamaha,159,619,Södermanland,2026-06-21,active
+demo,https://example.invalid/demo/buster-0033,Buster,XL,2015,257000,Yamaha,134,474,Östergötland,2026-07-16,active
+demo,https://example.invalid/demo/buster-0034,Buster,XL,2019,335000,Yamaha,132,630,Blekinge,2026-07-21,removed
+demo,https://example.invalid/demo/buster-0035,Buster,XL,2019,315000,Yamaha,139,856,Halland,2026-06-24,active
+demo,https://example.invalid/demo/buster-0036,Buster,XL,2015,283000,Yamaha,151,243,Östergötland,2026-06-01,active
+demo,https://example.invalid/demo/buster-0037,Buster,XL,2017,285000,Yamaha,148,492,Värmland,2026-05-30,removed
+demo,https://example.invalid/demo/buster-0038,Buster,XL,2013,224000,Mercury,177,483,Halland,2026-06-08,active
+demo,https://example.invalid/demo/buster-0039,Buster,XL,2020,387000,Yamaha,177,245,Uppsala,2026-07-30,active
+demo,https://example.invalid/demo/buster-0040,Buster,XL,2020,424000,Mercury,132,442,Stockholm,2026-07-10,active
+demo,https://example.invalid/demo/buster-0041,Buster,XL,2013,185000,Mercury,115,685,Värmland,2026-05-30,removed
+demo,https://example.invalid/demo/buster-0042,Buster,XL,2019,300000,Yamaha,134,135,Södermanland,2026-06-20,removed
+demo,https://example.invalid/demo/buster-0043,Buster,XL,2014,270000,Yamaha,198,102,Skåne,2026-05-15,active
+demo,https://example.invalid/demo/buster-0044,Buster,XL,2023,410000,Mercury,155,436,Södermanland,2026-06-06,removed
+demo,https://example.invalid/demo/buster-0045,Buster,XL,2020,361000,Mercury,166,139,Stockholm,2026-05-12,active
+demo,https://example.invalid/demo/buster-0046,Buster,XL,2017,315000,Yamaha,155,491,Södermanland,2026-05-30,active
+demo,https://example.invalid/demo/nimbus-0047,Nimbus,27,2020,1623000,Volvo Penta,283,266,Blekinge,2026-06-10,active
+demo,https://example.invalid/demo/nimbus-0048,Nimbus,27,2012,937000,Volvo Penta,304,346,Blekinge,2026-06-21,active
+demo,https://example.invalid/demo/nimbus-0049,Nimbus,27,2017,1262000,Volvo Penta,245,824,Halland,2026-06-27,removed
+demo,https://example.invalid/demo/nimbus-0050,Nimbus,27,2011,908000,Volvo Penta,308,286,Halland,2026-05-26,active
+demo,https://example.invalid/demo/nimbus-0051,Nimbus,27,2013,930000,Volvo Penta,243,226,Blekinge,2026-07-20,active
+demo,https://example.invalid/demo/nimbus-0052,Nimbus,27,2018,1440000,Volvo Penta,233,1015,Västra Götaland,2026-06-30,active
+demo,https://example.invalid/demo/nimbus-0053,Nimbus,27,2019,1684000,Volvo Penta,256,1033,Västra Götaland,2026-06-06,active
+demo,https://example.invalid/demo/nimbus-0054,Nimbus,27,2009,834000,Volvo Penta,242,650,Kalmar,2026-07-28,active
+demo,https://example.invalid/demo/nimbus-0055,Nimbus,27,2019,1674000,Volvo Penta,252,273,Kalmar,2026-06-03,active
+demo,https://example.invalid/demo/nimbus-0056,Nimbus,27,2011,1011000,Volvo Penta,304,566,Uppsala,2026-07-02,active
+demo,https://example.invalid/demo/nimbus-0057,Nimbus,27,2018,1346000,Volvo Penta,287,879,Skåne,2026-06-09,active
+demo,https://example.invalid/demo/nimbus-0058,Nimbus,27,2015,1002000,Volvo Penta,247,677,Östergötland,2026-06-08,removed
+demo,https://example.invalid/demo/nimbus-0059,Nimbus,27,2011,1022000,Volvo Penta,273,1190,Stockholm,2026-07-30,active
+demo,https://example.invalid/demo/nimbus-0060,Nimbus,27,2008,717000,Volvo Penta,287,815,Värmland,2026-06-05,removed
+demo,https://example.invalid/demo/nimbus-0061,Nimbus,27,2015,1242000,Volvo Penta,252,362,Östergötland,2026-05-16,active
+demo,https://example.invalid/demo/nimbus-0062,Nimbus,27,2012,1104000,Volvo Penta,286,332,Östergötland,2026-06-17,active
+demo,https://example.invalid/demo/nimbus-0063,Nimbus,27,2019,1575000,Volvo Penta,290,521,Östergötland,2026-06-09,active
+demo,https://example.invalid/demo/nimbus-0064,Nimbus,27,2008,767000,Volvo Penta,261,681,Blekinge,2026-06-03,active
+demo,https://example.invalid/demo/uttern-0065,Uttern,D68,2018,374000,Yamaha,175,389,Blekinge,2026-05-24,active
+demo,https://example.invalid/demo/uttern-0066,Uttern,D68,2015,225000,Mercury,158,736,Värmland,2026-07-26,removed
+demo,https://example.invalid/demo/uttern-0067,Uttern,D68,2019,364000,Suzuki,127,574,Värmland,2026-07-11,active
+demo,https://example.invalid/demo/uttern-0068,Uttern,D68,2023,518000,Suzuki,134,570,Blekinge,2026-07-09,active
+demo,https://example.invalid/demo/uttern-0069,Uttern,D68,2018,314000,Suzuki,150,592,Södermanland,2026-07-01,active
+demo,https://example.invalid/demo/uttern-0070,Uttern,D68,2013,268000,Suzuki,168,581,Blekinge,2026-06-12,active
+demo,https://example.invalid/demo/uttern-0071,Uttern,D68,2023,543000,Suzuki,131,84,Halland,2026-06-17,active
+demo,https://example.invalid/demo/uttern-0072,Uttern,D68,2013,251000,Mercury,151,233,Västra Götaland,2026-06-18,active
+demo,https://example.invalid/demo/uttern-0073,Uttern,D68,2018,361000,Yamaha,130,266,Östergötland,2026-06-15,active
+demo,https://example.invalid/demo/uttern-0074,Uttern,D68,2012,223000,Mercury,117,486,Stockholm,2026-07-25,active
+demo,https://example.invalid/demo/uttern-0075,Uttern,D68,2021,471000,Mercury,153,313,Södermanland,2026-06-18,active
+demo,https://example.invalid/demo/uttern-0076,Uttern,D68,2021,428000,Mercury,166,54,Östergötland,2026-05-08,active
+demo,https://example.invalid/demo/uttern-0077,Uttern,D68,2013,201000,Yamaha,175,674,Stockholm,2026-06-02,removed
+demo,https://example.invalid/demo/uttern-0078,Uttern,D68,2022,506000,Yamaha,137,776,Kalmar,2026-07-15,active
+demo,https://example.invalid/demo/uttern-0079,Uttern,D68,2021,419000,Suzuki,153,735,Kalmar,2026-07-24,active
+demo,https://example.invalid/demo/uttern-0080,Uttern,D68,2012,197000,Mercury,118,739,Värmland,2026-07-22,removed
+demo,https://example.invalid/demo/uttern-0081,Uttern,D68,2016,319000,Yamaha,139,641,Stockholm,2026-05-31,active
+demo,https://example.invalid/demo/uttern-0082,Uttern,D68,2014,231000,Mercury,160,58,Stockholm,2026-07-16,active
+demo,https://example.invalid/demo/uttern-0083,Uttern,D68,2017,274000,Suzuki,129,176,Värmland,2026-07-21,removed
+demo,https://example.invalid/demo/uttern-0084,Uttern,D68,2022,516000,Yamaha,163,128,Västra Götaland,2026-05-27,active
+demo,https://example.invalid/demo/uttern-0085,Uttern,D68,2017,304000,Yamaha,103,366,Värmland,2026-07-21,active
+demo,https://example.invalid/demo/bella-0086,Bella,703,2016,455000,Yamaha,191,865,Skåne,2026-06-09,active
+demo,https://example.invalid/demo/bella-0087,Bella,703,2016,402000,Mercury,219,76,Halland,2026-05-10,active
+demo,https://example.invalid/demo/bella-0088,Bella,703,2012,284000,Yamaha,182,427,Skåne,2026-05-27,active
+demo,https://example.invalid/demo/bella-0089,Bella,703,2019,528000,Mercury,212,637,Halland,2026-05-19,active
+demo,https://example.invalid/demo/bella-0090,Bella,703,2019,505000,Yamaha,220,320,Västra Götaland,2026-07-14,active
+demo,https://example.invalid/demo/bella-0091,Bella,703,2012,316000,Mercury,218,488,Blekinge,2026-07-17,active
+demo,https://example.invalid/demo/bella-0092,Bella,703,2016,364000,Mercury,186,360,Stockholm,2026-05-12,removed
+demo,https://example.invalid/demo/bella-0093,Bella,703,2019,584000,Yamaha,228,303,Östergötland,2026-07-31,active
+demo,https://example.invalid/demo/bella-0094,Bella,703,2015,410000,Mercury,168,418,Stockholm,2026-07-26,active
+demo,https://example.invalid/demo/bella-0095,Bella,703,2018,516000,Mercury,202,513,Halland,2026-07-12,active
+demo,https://example.invalid/demo/bella-0096,Bella,703,2021,555000,Mercury,173,733,Halland,2026-07-17,active
+demo,https://example.invalid/demo/bella-0097,Bella,703,2022,611000,Yamaha,156,74,Skåne,2026-06-06,active
+demo,https://example.invalid/demo/bella-0098,Bella,703,2018,503000,Yamaha,183,261,Västra Götaland,2026-06-04,active
+demo,https://example.invalid/demo/bella-0099,Bella,703,2016,453000,Mercury,226,97,Kalmar,2026-07-05,active
+demo,https://example.invalid/demo/bella-0100,Bella,703,2018,436000,Mercury,218,577,Västra Götaland,2026-07-12,active
+demo,https://example.invalid/demo/bella-0101,Bella,703,2018,392000,Yamaha,219,710,Skåne,2026-07-18,removed
+demo,https://example.invalid/demo/bella-0102,Bella,703,2019,435000,Mercury,153,817,Kalmar,2026-07-03,removed
+demo,https://example.invalid/demo/bella-0103,Bella,703,2014,353000,Yamaha,231,206,Stockholm,2026-07-18,active
+demo,https://example.invalid/demo/bella-0104,Bella,703,2020,507000,Yamaha,157,109,Södermanland,2026-07-28,active
+demo,https://example.invalid/demo/ryds-0105,Ryds,548,2022,244000,Yamaha,75,655,Kalmar,2026-07-07,removed
+demo,https://example.invalid/demo/ryds-0106,Ryds,548,2022,261000,Suzuki,81,401,Uppsala,2026-07-13,active
+demo,https://example.invalid/demo/ryds-0107,Ryds,548,2015,168000,Yamaha,90,109,Skåne,2026-07-29,active
+demo,https://example.invalid/demo/ryds-0108,Ryds,548,2014,160000,Suzuki,115,460,Värmland,2026-05-10,active
+demo,https://example.invalid/demo/ryds-0109,Ryds,548,2015,159000,Yamaha,92,651,Halland,2026-07-17,active
+demo,https://example.invalid/demo/ryds-0110,Ryds,548,2013,155000,Suzuki,82,157,Kalmar,2026-06-22,active
+demo,https://example.invalid/demo/ryds-0111,Ryds,548,2015,154000,Honda,89,187,Skåne,2026-07-16,active
+demo,https://example.invalid/demo/ryds-0112,Ryds,548,2016,158000,Yamaha,60,134,Halland,2026-06-12,active
+demo,https://example.invalid/demo/ryds-0113,Ryds,548,2014,153000,Yamaha,97,422,Södermanland,2026-07-09,active
+demo,https://example.invalid/demo/ryds-0114,Ryds,548,2010,122000,Honda,65,171,Stockholm,2026-06-14,active
+demo,https://example.invalid/demo/ryds-0115,Ryds,548,2013,147000,Yamaha,88,130,Kalmar,2026-06-11,active
+demo,https://example.invalid/demo/ryds-0116,Ryds,548,2016,188000,Yamaha,108,359,Uppsala,2026-06-15,active
+demo,https://example.invalid/demo/ryds-0117,Ryds,548,2014,140000,Yamaha,104,474,Kalmar,2026-06-23,active
+demo,https://example.invalid/demo/ryds-0118,Ryds,548,2018,183000,Honda,73,556,Kalmar,2026-06-12,removed
+demo,https://example.invalid/demo/ryds-0119,Ryds,548,2013,113000,Honda,115,332,Blekinge,2026-07-25,removed
+demo,https://example.invalid/demo/ryds-0120,Ryds,548,2014,126000,Yamaha,71,62,Blekinge,2026-05-24,removed
+demo,https://example.invalid/demo/ryds-0121,Ryds,548,2018,194000,Suzuki,75,684,Västra Götaland,2026-05-18,active
+demo,https://example.invalid/demo/ryds-0122,Ryds,548,2010,116000,Yamaha,70,213,Skåne,2026-05-31,active
+demo,https://example.invalid/demo/ryds-0123,Ryds,548,2014,158000,Yamaha,103,646,Västra Götaland,2026-06-07,active
+demo,https://example.invalid/demo/ryds-0124,Ryds,548,2022,270000,Yamaha,74,558,Värmland,2026-06-05,removed
+demo,https://example.invalid/demo/anytec-0125,Anytec,750,2018,761000,Yamaha,264,595,Östergötland,2026-06-08,active
+demo,https://example.invalid/demo/anytec-0126,Anytec,750,2021,966000,Mercury,242,204,Stockholm,2026-06-15,active
+demo,https://example.invalid/demo/anytec-0127,Anytec,750,2016,593000,Yamaha,345,552,Halland,2026-07-14,removed
+demo,https://example.invalid/demo/anytec-0128,Anytec,750,2013,516000,Mercury,333,156,Östergötland,2026-05-22,active
+demo,https://example.invalid/demo/anytec-0129,Anytec,750,2017,720000,Mercury,339,87,Stockholm,2026-07-23,active
+demo,https://example.invalid/demo/anytec-0130,Anytec,750,2014,506000,Mercury,254,367,Östergötland,2026-05-20,active
+demo,https://example.invalid/demo/anytec-0131,Anytec,750,2013,502000,Yamaha,303,167,Blekinge,2026-07-07,active
+demo,https://example.invalid/demo/anytec-0132,Anytec,750,2017,628000,Mercury,261,631,Blekinge,2026-07-06,active
+demo,https://example.invalid/demo/anytec-0133,Anytec,750,2016,541000,Mercury,303,97,Stockholm,2026-07-09,active
+demo,https://example.invalid/demo/anytec-0134,Anytec,750,2019,810000,Yamaha,234,412,Västra Götaland,2026-06-28,active
+demo,https://example.invalid/demo/anytec-0135,Anytec,750,2023,968000,Yamaha,287,597,Kalmar,2026-05-23,active
+demo,https://example.invalid/demo/anytec-0136,Anytec,750,2018,663000,Yamaha,274,420,Kalmar,2026-06-24,removed
+demo,https://example.invalid/demo/anytec-0137,Anytec,750,2018,621000,Mercury,344,318,Västra Götaland,2026-06-02,active
+demo,https://example.invalid/demo/anytec-0138,Anytec,750,2017,567000,Yamaha,234,534,Västra Götaland,2026-06-29,removed
+demo,https://example.invalid/demo/anytec-0139,Anytec,750,2015,575000,Yamaha,268,231,Östergötland,2026-06-16,active
+demo,https://example.invalid/demo/anytec-0140,Anytec,750,2019,812000,Yamaha,265,632,Värmland,2026-07-09,active
+demo,https://example.invalid/demo/anytec-0141,Anytec,750,2015,565000,Mercury,281,238,Stockholm,2026-06-22,active
+demo,https://example.invalid/demo/flipper-0142,Flipper,640,2015,267000,Yamaha,167,706,Uppsala,2026-06-12,active
+demo,https://example.invalid/demo/flipper-0143,Flipper,640,2016,272000,Yamaha,185,87,Halland,2026-05-11,removed
+demo,https://example.invalid/demo/flipper-0144,Flipper,640,2019,416000,Mercury,120,708,Kalmar,2026-05-08,active
+demo,https://example.invalid/demo/flipper-0145,Flipper,640,2011,214000,Suzuki,182,574,Uppsala,2026-07-12,active
+demo,https://example.invalid/demo/flipper-0146,Flipper,640,2016,310000,Suzuki,179,577,Uppsala,2026-06-09,removed
+demo,https://example.invalid/demo/flipper-0147,Flipper,640,2016,259000,Yamaha,149,168,Kalmar,2026-05-14,removed
+demo,https://example.invalid/demo/flipper-0148,Flipper,640,2010,202000,Yamaha,141,689,Värmland,2026-06-11,active
+demo,https://example.invalid/demo/flipper-0149,Flipper,640,2013,209000,Suzuki,185,629,Uppsala,2026-07-26,removed
+demo,https://example.invalid/demo/flipper-0150,Flipper,640,2010,185000,Yamaha,197,200,Halland,2026-06-03,active
+demo,https://example.invalid/demo/flipper-0151,Flipper,640,2015,320000,Suzuki,124,820,Kalmar,2026-06-03,active
+demo,https://example.invalid/demo/flipper-0152,Flipper,640,2017,303000,Suzuki,118,955,Västra Götaland,2026-06-27,active
+demo,https://example.invalid/demo/flipper-0153,Flipper,640,2014,263000,Suzuki,155,498,Kalmar,2026-05-15,active
+demo,https://example.invalid/demo/flipper-0154,Flipper,640,2015,252000,Mercury,189,428,Halland,2026-06-12,removed
+demo,https://example.invalid/demo/flipper-0155,Flipper,640,2020,462000,Mercury,197,928,Blekinge,2026-06-21,active
+demo,https://example.invalid/demo/flipper-0156,Flipper,640,2019,369000,Suzuki,119,579,Stockholm,2026-07-04,active
+demo,https://example.invalid/demo/flipper-0157,Flipper,640,2013,207000,Suzuki,167,859,Östergötland,2026-07-03,removed
+demo,https://example.invalid/demo/flipper-0158,Flipper,640,2018,392000,Yamaha,152,936,Kalmar,2026-06-07,active
+demo,https://example.invalid/demo/flipper-0159,Flipper,640,2019,320000,Yamaha,168,760,Blekinge,2026-07-17,removed
+demo,https://example.invalid/demo/maxi-0160,Maxi,77,1980,94000,Volvo Penta,12,934,Halland,2026-06-10,removed
+demo,https://example.invalid/demo/maxi-0161,Maxi,77,1976,105000,Yanmar,19,430,Kalmar,2026-05-22,active
+demo,https://example.invalid/demo/maxi-0162,Maxi,77,1976,115000,Yanmar,16,2203,Södermanland,2026-06-02,active
+demo,https://example.invalid/demo/maxi-0163,Maxi,77,1977,118000,Volvo Penta,18,1831,Halland,2026-07-02,active
+demo,https://example.invalid/demo/maxi-0164,Maxi,77,1984,125000,Volvo Penta,19,2013,Stockholm,2026-07-07,active
+demo,https://example.invalid/demo/maxi-0165,Maxi,77,1976,101000,Volvo Penta,13,695,Västra Götaland,2026-07-12,removed
+demo,https://example.invalid/demo/maxi-0166,Maxi,77,1980,111000,Yanmar,20,2720,Värmland,2026-05-21,active
+demo,https://example.invalid/demo/maxi-0167,Maxi,77,1983,114000,Volvo Penta,17,476,Stockholm,2026-06-04,active
+demo,https://example.invalid/demo/maxi-0168,Maxi,77,1981,122000,Yanmar,12,1476,Värmland,2026-06-18,active
+demo,https://example.invalid/demo/maxi-0169,Maxi,77,1980,127000,Volvo Penta,8,670,Stockholm,2026-07-07,active
+demo,https://example.invalid/demo/maxi-0170,Maxi,77,1978,103000,Volvo Penta,14,877,Kalmar,2026-06-12,removed
+demo,https://example.invalid/demo/maxi-0171,Maxi,77,1986,137000,Yanmar,11,1333,Skåne,2026-06-02,active
+demo,https://example.invalid/demo/maxi-0172,Maxi,77,1983,111000,Yanmar,8,1476,Värmland,2026-07-12,active
+demo,https://example.invalid/demo/maxi-0173,Maxi,77,1979,120000,Volvo Penta,12,554,Skåne,2026-05-24,active
+demo,https://example.invalid/demo/maxi-0174,Maxi,77,1980,133000,Volvo Penta,8,989,Södermanland,2026-06-04,active
+demo,https://example.invalid/demo/maxi-0175,Maxi,77,1975,111000,Volvo Penta,17,2909,Södermanland,2026-06-13,active
+demo,https://example.invalid/demo/albin-0176,Albin,Vega,1977,44000,Volvo Penta,9,1182,Uppsala,2026-07-11,removed
+demo,https://example.invalid/demo/albin-0177,Albin,Vega,1968,49000,Volvo Penta,10,942,Halland,2026-07-30,active
+demo,https://example.invalid/demo/albin-0178,Albin,Vega,1968,51000,Yanmar,12,3535,Halland,2026-06-02,active
+demo,https://example.invalid/demo/albin-0179,Albin,Vega,1968,51000,Volvo Penta,14,1922,Västra Götaland,2026-07-31,active
+demo,https://example.invalid/demo/albin-0180,Albin,Vega,1974,45000,Yanmar,9,3085,Östergötland,2026-06-14,removed
+demo,https://example.invalid/demo/albin-0181,Albin,Vega,1968,36000,Volvo Penta,17,3842,Blekinge,2026-07-19,removed
+demo,https://example.invalid/demo/albin-0182,Albin,Vega,1971,47000,Yanmar,8,3257,Uppsala,2026-07-10,active
+demo,https://example.invalid/demo/albin-0183,Albin,Vega,1974,48000,Volvo Penta,19,3044,Östergötland,2026-06-19,active
+demo,https://example.invalid/demo/albin-0184,Albin,Vega,1979,55000,Volvo Penta,19,1697,Halland,2026-07-17,active
+demo,https://example.invalid/demo/albin-0185,Albin,Vega,1971,48000,Yanmar,13,3210,Skåne,2026-05-26,active
+demo,https://example.invalid/demo/albin-0186,Albin,Vega,1968,46000,Volvo Penta,10,3584,Uppsala,2026-06-11,removed
+demo,https://example.invalid/demo/albin-0187,Albin,Vega,1977,48000,Yanmar,18,3632,Östergötland,2026-05-27,active
+demo,https://example.invalid/demo/albin-0188,Albin,Vega,1970,43000,Yanmar,7,2668,Södermanland,2026-07-10,active
+demo,https://example.invalid/demo/albin-0189,Albin,Vega,1979,44000,Volvo Penta,13,3846,Värmland,2026-06-27,removed
+demo,https://example.invalid/demo/albin-0190,Albin,Vega,1971,51000,Volvo Penta,11,3126,Östergötland,2026-06-21,active

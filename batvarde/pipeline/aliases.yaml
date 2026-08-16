@@ -1,0 +1,50 @@
+- brand: Yamarin
+  model: 79 DC
+  type: motorbåt
+  length_m: 7.9
+  aliases: ["yamarin 79", "79dc", "79 dc", "yamarin 79dc"]
+- brand: Buster
+  model: XL
+  type: motorbåt
+  length_m: 6.2
+  aliases: ["buster xl", "busterxl"]
+- brand: Nimbus
+  model: 27
+  type: motorbåt
+  length_m: 8.6
+  aliases: ["nimbus 27", "nimbus 27 nova", "nimbus 27 dc"]
+- brand: Uttern
+  model: D68
+  type: motorbåt
+  length_m: 6.8
+  aliases: ["uttern d68", "d68", "uttern d 68"]
+- brand: Bella
+  model: 703
+  type: motorbåt
+  length_m: 7.0
+  aliases: ["bella 703", "bella 703 br"]
+- brand: Ryds
+  model: 548
+  type: motorbåt
+  length_m: 5.5
+  aliases: ["ryds 548", "ryds 548 dc", "ryds 548 gt"]
+- brand: Anytec
+  model: 750
+  type: motorbåt
+  length_m: 7.5
+  aliases: ["anytec 750", "anytec 750 spd", "anytec 750 ca"]
+- brand: Flipper
+  model: 640
+  type: motorbåt
+  length_m: 6.4
+  aliases: ["flipper 640", "flipper 640 dc", "flipper 640 st"]
+- brand: Maxi
+  model: 77
+  type: segelbåt
+  length_m: 7.7
+  aliases: ["maxi 77", "maxi77"]
+- brand: Albin
+  model: Vega
+  type: segelbåt
+  length_m: 8.25
+  aliases: ["albin vega", "vega 27", "vega"]

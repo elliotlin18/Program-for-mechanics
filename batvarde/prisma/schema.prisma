@@ -1,0 +1,83 @@
+// Datamodell enligt docs/PROTOTYP.md avsnitt 3.
+// SQLite har inga arrayer eller jsonb -> aliases och price_history lagras som JSON-text.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model BoatsModel {
+  id       Int     @id @default(autoincrement())
+  brand    String
+  model    String
+  type     String
+  lengthM  Float?  @map("length_m")
+  aliases  String // JSON-array, t.ex. ["yamarin 79","79dc"]
+
+  listings Listing[]
+  stats    ModelStats[]
+
+  @@unique([brand, model])
+  @@map("boats_model")
+}
+
+model Listing {
+  id           Int       @id @default(autoincrement())
+  source       String
+  sourceId     String    @map("source_id")
+  url          String    @unique
+  modelId      Int?      @map("model_id")
+  year         Int?
+  price        Int
+  engineBrand  String?   @map("engine_brand")
+  engineHp     Int?      @map("engine_hp")
+  hours        Int?
+  region       String?
+  titleRaw     String?   @map("title_raw")
+  firstSeen    DateTime  @map("first_seen")
+  lastSeen     DateTime  @map("last_seen")
+  removedAt    DateTime? @map("removed_at")
+  priceHistory String    @map("price_history") // JSON-array: [{"date":"2026-08-01","price":895000}]
+
+  boatsModel BoatsModel? @relation(fields: [modelId], references: [id])
+
+  @@unique([source, sourceId])
+  @@index([modelId])
+  @@map("listing")
+}
+
+model ModelStats {
+  id      Int @id @default(autoincrement())
+  modelId Int @map("model_id")
+
+  // Fönstret statistiken räknats på, i dagar (90 i prototypen).
+  windowDays Int @map("window_days")
+
+  nActive  Int @map("n_active")
+  nRemoved Int @map("n_removed")
+
+  // Aktiva annonser = listpriser.
+  p25    Int?
+  median Int?
+  p75    Int?
+
+  // Borttagna annonser = "troligen sålt"-priser. Det är dessa ingen annan visar.
+  p25Removed    Int? @map("p25_removed")
+  medianRemoved Int? @map("median_removed")
+  p75Removed    Int? @map("p75_removed")
+
+  medianDaysOnMarket Int?   @map("median_days_on_market")
+  avgPriceDropPct    Float? @map("avg_price_drop_pct")
+
+  // hög >= 30 obs, medel 10-29, låg < 10
+  confidence String
+
+  boatsModel BoatsModel @relation(fields: [modelId], references: [id])
+
+  @@unique([modelId, windowDays])
+  @@map("model_stats")
+}
