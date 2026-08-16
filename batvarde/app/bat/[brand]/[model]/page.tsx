@@ -20,7 +20,7 @@ import {
   weeklyMedians,
   type Confidence,
 } from '@/lib/stats'
-import { daysBetween, formatSek, slugify } from '@/lib/utils'
+import { daysBetween, formatPercent, formatSek, slugify } from '@/lib/utils'
 
 export const dynamic = 'force-dynamic'
 
@@ -136,9 +136,7 @@ export default async function ModelPage({
             <CardTitle>Snittprissänkning</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-semibold">
-              {stats.avgPriceDropPct === null ? '–' : `${stats.avgPriceDropPct} %`}
-            </div>
+            <div className="text-2xl font-semibold">{formatPercent(stats.avgPriceDropPct)}</div>
             <div className="mt-1 text-xs text-muted-foreground">
               Bland annonser som sänkt priset minst en gång.
             </div>

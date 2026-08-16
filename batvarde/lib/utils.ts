@@ -24,6 +24,11 @@ export function formatSek(value: number | null | undefined): string {
   }).format(value)
 }
 
+export function formatPercent(value: number | null | undefined): string {
+  if (value === null || value === undefined) return '–'
+  return `${new Intl.NumberFormat('sv-SE', { maximumFractionDigits: 1 }).format(value)} %`
+}
+
 export function formatDate(date: Date): string {
   return date.toISOString().slice(0, 10)
 }

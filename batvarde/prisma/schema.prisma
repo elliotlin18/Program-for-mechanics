@@ -43,11 +43,33 @@ model Listing {
   removedAt    DateTime? @map("removed_at")
   priceHistory String    @map("price_history") // JSON-array: [{"date":"2026-08-01","price":895000}]
 
+  // Räknare för 2+2-regeln i pipeline/detect_removed.py: annons som funnits i minst
+  // två körningar och sedan saknats i två körningar räknas som borttagen.
+  seenRuns    Int @default(0) @map("seen_runs")
+  missingRuns Int @default(0) @map("missing_runs")
+
   boatsModel BoatsModel? @relation(fields: [modelId], references: [id])
 
   @@unique([source, sourceId])
   @@index([modelId])
   @@map("listing")
+}
+
+/// En körning av pipeline/scrape.py. detect_removed.py behöver veta vilka körningar
+/// som gjorts för att kunna räkna hur många körningar en annons saknats i.
+model ScrapeRun {
+  id         Int       @id @default(autoincrement())
+  source     String
+  startedAt  DateTime  @map("started_at")
+  finishedAt DateTime? @map("finished_at")
+  nSeen      Int       @default(0) @map("n_seen")
+
+  // Sätts av detect_removed.py när körningen räknats. Gör steget idempotent –
+  // samma körning får aldrig höja missing_runs två gånger.
+  detectedAt DateTime? @map("detected_at")
+
+  @@index([source, startedAt])
+  @@map("scrape_run")
 }
 
 model ModelStats {

@@ -19,7 +19,22 @@ npm run db:count       # verifierar modeller, annonser och statistik
 npm run dev            # http://localhost:3000
 ```
 
-Statistiken räknas om med `python pipeline/stats.py` (bara standardbiblioteket).
+## Pipeline
+
+```bash
+pip install -r pipeline/requirements.txt
+
+python pipeline/scrape.py --limit 1     # kör så här första gången, se docs/PROGRESS.md
+python pipeline/scrape.py               # alla modeller
+python pipeline/detect_removed.py       # 2+2-regeln
+python pipeline/stats.py                # räknar om model_stats
+python pipeline/test_pipeline.py        # 23 tester, kräver ingen nätverksåtkomst
+```
+
+`scrape.py --offline` kör mot cachad HTML i `data/cache/` utan att göra några anrop.
+
+`pipeline/blocket.py` är skriven utan tillgång till Blockets riktiga HTML och behöver
+stämmas av mot sajten – läs "Vad som återstår i steg 3" i `docs/PROGRESS.md` först.
 
 Klart hittills: modellsidan `/bat/[brand]/[model]` (steg 1). `/` är ett enkelt modellindex
 tills startsidan byggs i steg 6.
