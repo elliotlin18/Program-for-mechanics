@@ -50,6 +50,22 @@ export type ValuationResult = {
   comparables: ValuationListing[]
 }
 
+/** Gränsen för annonskollens färgkodning: grön under −5 %, gul ±5 %, röd över +5 %. */
+export const DEVIATION_THRESHOLD = 5
+
+export type Verdict = 'under' | 'rimlig' | 'over'
+
+/** Hur mycket ett annonspris avviker från medianen, i procent. */
+export function priceDeviation(price: number, median: number): number {
+  return ((price - median) / median) * 100
+}
+
+export function verdictFor(deviationPct: number): Verdict {
+  if (deviationPct < -DEVIATION_THRESHOLD) return 'under'
+  if (deviationPct > DEVIATION_THRESHOLD) return 'over'
+  return 'rimlig'
+}
+
 export function conditionFactor(condition: number): number {
   return 1 + CONDITION_STEP * (condition - DEFAULT_CONDITION)
 }

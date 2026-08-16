@@ -38,6 +38,17 @@ Gör så här första gången du kör mot skarp sajt: `python pipeline/scrape.py
 - **Värdet avrundas till närmaste tusen.** En värdering på kronan (792 488 kr) låtsas om en precision vi inte har. Rådata före skickjusteringen avrundas inte, så siffran går att stämma av mot annonserna.
 - Viktningen är gjord genom att räkna en borttagen annons som två observationer, inte med en egen viktad percentilfunktion. Det gör att `/vardera` och modellsidan använder exakt samma `percentile()` och blir lätt att förklara på en "Så räknar vi"-sida i steg 6.
 
+## Steg 5 – Annonskollen (klart, med samma förbehåll som steg 3)
+- `/kolla` tar en annonslänk och svarar med avvikelse i procent mot medianen för modell och årsmodell ±2 år, plus dagar ute, prissänkningar och jämförbara annonser. Färgkodning enligt specen: grön under −5 %, gul ±5 %, röd över +5 %. Misslyckas hämtningen visas ett manuellt formulär med felet och parserns diagnos utskriven.
+- Ordningen är: känner vi redan igen URL:en i `listing` använder vi vår egen data – då vet vi dessutom dagar ute och antal prissänkningar. Annars hämtas annonsen via `pipeline/fetch_ad.py`.
+- Verifierat: alla tre färgerna (+31,1 % röd, −20,2 % grön, +0,6 % gul), databasvägen, det manuella formuläret, misslyckad hämtning, otillåten domän och okänd modell. `typecheck`, `lint`, `npm test` (11) och `python pipeline/test_pipeline.py` (23) går igenom.
+
+### Två val värda att känna till
+- **"Samma parser som scrapern" tas bokstavligt.** Parsern finns i Python, appen i TypeScript. I stället för att skriva en andra tolkning i TypeScript – som garanterat skulle glida isär från den första – anropar `lib/fetch-ad.ts` skriptet `pipeline/fetch_ad.py` med `execFile`. Då gäller samma extrahering, samma alias-matchning, samma robots.txt-kontroll och samma en-request-varannan-sekund även här. URL:en valideras mot en lista tillåtna domäner innan skriptet startas, och `execFile` går inte via något skal.
+- **Annonsen som kollas räknas bort ur sitt eget jämförelseunderlag.** Annars jämförs den mot en median den själv drar åt sitt håll – med sex observationer var effekten direkt synlig.
+
+Kvarstår: själva hämtningen av en ny annons är otestad av samma skäl som i steg 3 – ingen nätverksåtkomst i byggmiljön. Databasvägen, det manuella formuläret och hela felhanteringen är verifierade, och `fetch_ad.py` är verifierad mot cachad HTML (`--offline`).
+
 ## Öppna punkter inför nästa steg
 - **`data/seed_demo.csv` är påhittad demodata**, genererad för att kunna bygga och testa UI:t innan riktig data finns. Källa `demo`, URL:er på `example.invalid`. Visa den aldrig för Matija som marknadsdata – seeda om från `data/seed.csv` när de riktiga raderna finns.
 - "Median dagar på marknaden" blir 14 för alla modeller så länge datan bara är seedad, eftersom seed-regeln sätter `removed_at = first_seen + 14 dagar`. Riktig spridning kommer när `detect_removed.py` fått köra ett par dagar.
