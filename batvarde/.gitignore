@@ -8,5 +8,8 @@ data/boats.db
 data/boats.db-journal
 data/cache/
 
+__pycache__/
+*.pyc
+
 .env
 .DS_Store
