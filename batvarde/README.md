@@ -19,6 +19,8 @@ npm run db:count       # verifierar modeller, annonser och statistik
 npm run dev            # http://localhost:3000
 ```
 
+Statistiken räknas om med `python pipeline/stats.py` (bara standardbiblioteket).
+
 Klart hittills: modellsidan `/bat/[brand]/[model]` (steg 1). `/` är ett enkelt modellindex
 tills startsidan byggs i steg 6.
 
